@@ -7,7 +7,7 @@
  *  - Validate the media-type provided/parsed
  *  - Validate the encoded data provided/parsed
  * 
- * @link http://www.flyingtophat.co.uk/blog/27/using-data-uris-with-php Examples
+ * @link http://www.flyingtophat.co.uk/blog/27/using-data-uris-in-php Examples
  * @author <a href="http://www.flyingtophat.co.uk/">Lucas</a>
  */
 class DataUri {
