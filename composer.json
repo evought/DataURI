@@ -1,0 +1,16 @@
+{
+    "name": "evought/data-uri",
+    "description": "A convenient class for working with Data URIs in PHP.",
+    "authors": [
+        { "name": "Lucas", "email": "flyingtophat@outlook.com" }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "4.3.*"
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "classmap": ["."]
+    }
+}
