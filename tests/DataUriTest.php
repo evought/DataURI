@@ -1,6 +1,11 @@
 <?php
-require('DataUri.php');
-
+/**
+ * DataURI phpUnit test cases
+ *
+ * @link https://github.com/evought/DataURI
+ * @author <a href="http://www.flyingtophat.co.uk/">Lucas</a>
+ * @author Eric Vought
+ */
 class DataUriTest extends PHPUnit_Framework_TestCase {
 
     /**
