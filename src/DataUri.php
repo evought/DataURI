@@ -205,7 +205,7 @@ class DataUri {
      * Determines whether a string is data URI with the components necessary for
      * it to be parsed by the {@link DataUri::tryParse($s, &$out)} method.
      * 
-     * @param string $string Data URI
+     * @param dataUriString $string Data URI
      * @return boolean <code>true</code> if possible to parse,
      * else <code>false</code>
      */
