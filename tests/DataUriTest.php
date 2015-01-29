@@ -6,7 +6,9 @@
  * @author <a href="http://www.flyingtophat.co.uk/">Lucas</a>
  * @author Eric Vought
  */
-class DataUriTest extends PHPUnit_Framework_TestCase {
+namespace EVought\DataUri;
+
+class DataUriTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @var DataUri
@@ -81,13 +83,13 @@ class DataUriTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('', $this->dataUri->getEncodedData());
         
         $this->dataUri->setData('ABC<>\/.?^%£');
-        $this->assertEquals(rawurlencode('ABC<>\/.?^%£'), $this->dataUri->getEncodedData());
+        $this->assertEquals(\rawurlencode('ABC<>\/.?^%£'), $this->dataUri->getEncodedData());
         
         $this->dataUri->setData('KFJ%&£"%*||`', DataUri::ENCODING_URL_ENCODED_OCTETS);
-        $this->assertEquals(rawurlencode('KFJ%&£"%*||`'), $this->dataUri->getEncodedData());
+        $this->assertEquals(\rawurlencode('KFJ%&£"%*||`'), $this->dataUri->getEncodedData());
         
         $this->dataUri->setData('~:{}[123S', DataUri::ENCODING_BASE64);
-        $this->assertEquals(base64_encode('~:{}[123S'), $this->dataUri->getEncodedData());
+        $this->assertEquals(\base64_encode('~:{}[123S'), $this->dataUri->getEncodedData());
         
         $this->dataUri->setData('', DataUri::ENCODING_URL_ENCODED_OCTETS);
         $this->assertEquals('', $this->dataUri->getEncodedData());
@@ -157,7 +159,7 @@ class DataUriTest extends PHPUnit_Framework_TestCase {
         $this->dataUri->setMediaType('image/png');
         $this->dataUri->setData('HG2/$%&£"34A', DataUri::ENCODING_BASE64);
         
-        $encoded = base64_encode('HG2/$%&£"34A');
+        $encoded = \base64_encode('HG2/$%&£"34A');
         $this->assertEquals("data:image/png;base64,{$encoded}",
             $this->dataUri->toString());
     }

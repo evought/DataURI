@@ -10,6 +10,8 @@
  * @link http://www.flyingtophat.co.uk/blog/2012/09/08/using-data-uris-in-php.html Examples
  * @author <a href="http://www.flyingtophat.co.uk/">Lucas</a>
  */
+namespace EVought\DataUri;
+
 class DataUri {
     
     /** @var Regular expression used for decomposition of data URI scheme */
@@ -103,12 +105,12 @@ class DataUri {
      * {@link DataUri::ENCODING_URL_ENCODED_OCTETS} or
      * {@link DataUri::ENCODING_BASE64}
      * @param string $data Data encoded with the encoding scheme provided
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function setEncodedData($encoding, $data) {
         if(($encoding !== DataUri::ENCODING_URL_ENCODED_OCTETS) &&
             ($encoding !== DataUri::ENCODING_BASE64)) {
-            throw new InvalidArgumentException('Unsupported encoding scheme');
+            throw new \InvalidArgumentException('Unsupported encoding scheme');
         }
         
         $this->encoding = $encoding;
@@ -124,7 +126,7 @@ class DataUri {
      * @param int $encoding Class constant of either 
      * {@link DataUri::ENCODING_URL_ENCODED_OCTETS} or
      * {@link DataUri::ENCODING_BASE64}
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function setData($data, $encoding = DataUri::ENCODING_URL_ENCODED_OCTETS) {
         switch($encoding) {
@@ -137,7 +139,7 @@ class DataUri {
                 $this->encodedData = base64_encode($data);
                 break;
             default:
-                throw new InvalidArgumentException('Unsupported encoding scheme');
+                throw new \InvalidArgumentException('Unsupported encoding scheme');
                 break;
         }
     }
@@ -154,11 +156,11 @@ class DataUri {
         
         switch($this->getEncoding()) {
             case DataUri::ENCODING_URL_ENCODED_OCTETS:
-                $decodedData = rawurldecode($this->getEncodedData());
+                $decodedData = \rawurldecode($this->getEncodedData());
                 $hasOutput = true;
                 break;
             case DataUri::ENCODING_BASE64:
-                $b64Decoded = base64_decode($this->getEncodedData(), true);
+                $b64Decoded = \base64_decode($this->getEncodedData(), true);
 
                 if($b64Decoded !== false) {
                     $decodedData = $b64Decoded;
@@ -208,7 +210,7 @@ class DataUri {
      * else <code>false</code>
      */
     public static function isParsable ($dataUriString) {
-        return (preg_match(DataUri::$REGEX_URI, $dataUriString) === 1);
+        return (\preg_match(DataUri::$REGEX_URI, $dataUriString) === 1);
     }
     
     /**
@@ -223,7 +225,7 @@ class DataUri {
         
         if(DataUri::isParsable($dataUriString)) {
             $matches = null;
-            if(preg_match_all(DataUri::$REGEX_URI,
+            if(\preg_match_all(DataUri::$REGEX_URI,
                 $dataUriString,
                 $matches,
                 PREG_SET_ORDER) !== false) {
@@ -233,7 +235,7 @@ class DataUri {
                     : DataUri::DEFAULT_TYPE;
 
                 $matchedEncoding = isset($matches[0][2]) ? $matches[0][2] : '';
-                $encoding = (strtolower($matchedEncoding) === DataUri::BASE64_KEYWORD)
+                $encoding = (\strtolower($matchedEncoding) === DataUri::BASE64_KEYWORD)
                     ? DataUri::ENCODING_BASE64
                     : DataUri::ENCODING_URL_ENCODED_OCTETS;
 
