@@ -29,5 +29,6 @@ a production component could be added.
 
 #Licensing#
 
-All of my modifications and additions are under an MIT license. FlyTopHat, by publishing as a Gist, granted a license to view and fork his code (and by publishing it as demonstration code in a tutorial conveyed a broader intent to share it generally in an educational context). Composer/Packagist is simply an automated method for forking Github projects, allowing one to track where the code came from and automatically fetch changes. Therefore my interpretation is that packaging the code as a Composer dependency through Packagist is permitted through the terms already granted. Without licensing clarification from FlyingTopHat, other uses might be questionable.
+All components are under an MIT license. FlyingTopHat added an MIT license to
+the original GIST on 2 February 2015 to clarify original license.
 
